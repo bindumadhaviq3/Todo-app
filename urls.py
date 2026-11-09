@@ -1,8 +1,10 @@
 
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("messageapp.urls")),
+    path("", views.todo_list, name="todo_list"),
+    path("edit/<int:task_id>/", views.edit_task, name="edit_task"),
+    path("complete/<int:task_id>/", views.complete_task, name="complete_task"),
+    path("delete/<int:task_id>/", views.delete_task, name="delete_task"),
 ]
